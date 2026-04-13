@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 19th Birthday 💖</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Alex+Brush&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ===================== AMBIENT BG ===================== -->
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+  <canvas id="stardust"></canvas>
+
+  <!-- ===================== HERO SECTION ===================== -->
+  <section class="hero" id="hero">
+    <div class="hero-label">a birthday letter ✦</div>
+    <h1 class="hero-title">
+      <span class="line1">Happy</span>
+      <span class="line2">19<sup>th</sup></span>
+      <span class="line3">Birthday</span>
+    </h1>
+    <!-- ✏️ EDIT HER NAME HERE -->
+    <p class="hero-name">to my dearest <em>Sakhii ♡♡</em></p>
+    <div class="scroll-hint">scroll to explore ↓</div>
+  </section>
+
+  <!-- ===================== POLAROID WALL ===================== -->
+  <section class="section polaroid-section" id="memories">
+    <div class="section-label">✦ memories we made ✦</div>
+    <h2 class="section-title">Our Story in Pictures</h2>
+
+    <div class="polaroid-wall">
+
+      <!-- POLAROID 1 -->
+      <!-- ✏️ Replace src="..." with your image path for each polaroid -->
+      <div class="polaroid p1">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="1">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="WhatsApp Image 2026-04-13 at 9.39.57 PM.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 1 -->
+        <p class="polaroid-caption">the best days 🌷</p>
+      </div>
+
+      <!-- POLAROID 2 -->
+      <div class="polaroid p2">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="2">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="sakshi photo 1.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 2 -->
+        <p class="polaroid-caption">golden hours 🌅</p>
+      </div>
+
+      <!-- POLAROID 3 -->
+      <div class="polaroid p3">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="3">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="sakshi photo 3.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 3 -->
+        <p class="polaroid-caption">laughing always 😂</p>
+      </div>
+
+      <!-- POLAROID 4 -->
+      <div class="polaroid p4">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="4">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="sakshi photo 2.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 4 -->
+        <p class="polaroid-caption">adventures 🌍</p>
+      </div>
+
+      <!-- POLAROID 5 -->
+      <div class="polaroid p5">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="4">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="sakshi photo 4.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 5 -->
+        <p class="polaroid-caption">late nights 🌙</p>
+      </div>
+
+      <div class="polaroid p2">
+        <div class="polaroid-photo">
+          <div class="img-slot" data-slot="2">
+            <div class="slot-content">
+              <span class="slot-icon">🌸</span>
+              <span class="slot-hint">Photo 1</span>
+            </div>
+            <img src="mainphoto.jpeg" alt="Memory 1" />
+          </div>
+        </div>
+        <!-- ✏️ EDIT CAPTION 2 -->
+        <p class="polaroid-caption">19 years of your magic ✨</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== CINEMATIC SPOTLIGHT ===================== -->
+  <section class="section spotlight-section" id="spotlight">
+    <div class="section-label">✦ the star of the show ✦</div>
+
+    <div class="spotlight-layout">
+      <!-- Main hero image slot -->
+      <div class="spotlight-frame">
+        <div class="spotlight-ring"></div>
+        <div class="img-slot spotlight-img" data-slot="main">
+          <div class="slot-content">
+            <span class="slot-icon large">📸</span>
+            <!-- ✏️ MAIN IMAGE SLOT: Replace with <img src="main-photo.jpg" alt="Main photo" /> -->
+            <span class="slot-hint">Your Best Photo Here</span>
+          </div>
+          <img src="newimage.jpeg" alt="Sakhi spotlight photo" />
+        </div>
+        <div class="spotlight-glow"></div>
+      </div>
+
+      <div class="spotlight-text">
+        <!-- ✏️ EDIT HER NAME IN THE QUOTE -->
+        <blockquote class="big-quote">
+          "She is clothed in strength and dignity, and she laughs without fear of the future."
+        </blockquote>
+        <!-- ✏️ EDIT THIS MESSAGE -->
+        <p class="spotlight-message">
+          Nineteen years of watching you grow into the most radiant,
+          fierce, and beautiful person. Every single day with you is
+          a gift I will never take for granted. 🌸
+        </p>
+        <div class="stat-row">
+          <div class="stat">
+            <span class="stat-num" data-target="19">0</span>
+            <span class="stat-label">years of magic</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="365">0</span>
+            <span class="stat-label">days a year I smile</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num" data-target="∞">0</span>
+            <span class="stat-label">love for you</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ===================== LOVE LETTER ===================== -->
+  <section class="section letter-section" id="letter">
+    <div class="letter-card">
+      <div class="letter-seal">19</div>
+      <div class="letter-header">
+        <span class="letter-date">April 14, 2026</span>
+      </div>
+      <!-- ✏️ EDIT HER NAME IN GREETING -->
+      <p class="letter-greeting">My dearest <em>Sakhii♡♡</em>,</p>
+      <!-- ✏️ EDIT FULL LETTER MESSAGE BELOW -->
+      <div class="letter-body">
+        <p>
+          Happy Birthday to the girl who is so much more than a friend!
+We might have started out as just our dads' kids playing together, but somewhere along the way, you became my sister, my absolute best friend, and my whole world. Growing up by your side has been the greatest gift.
+        </p>
+        <p>
+          I look forward to our daily chats, telling each other every single detail about our day, and of course, all our gossip sessions! 
+        </p>
+        <p>
+          You are such an amazing listener, and I am so grateful for how you always teach me good things and guide me. You mean everything to me, and I hope your special day is as beautiful as the bond we share
+        </p>
+        <p>Happy birthday, my beautiful sister. Here's to you — always. 💖</p>
+      </div>
+      <p class="letter-sign">
+        With all the love in the universe,<br/>
+        <!-- ✏️ EDIT YOUR NAME HERE -->
+        <em> Gaurav bhau 😊</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- ===================== FINALE / SURPRISE ===================== -->
+  <section class="section finale-section" id="finale">
+    <div class="finale-inner">
+      <div class="finale-number">19</div>
+      <h2 class="finale-title">Here's to You ✨</h2>
+      <p class="finale-sub">Tap below to send your love into the universe</p>
+      <button class="btn-celebrate" id="btnCelebrate">
+        <span class="btn-text">🎉 Celebrate!</span>
+        <span class="btn-ring"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX for viewing images full screen -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img src="" alt="" id="lightboxImg" />
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

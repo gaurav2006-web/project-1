@@ -1,0 +1,775 @@
+/* =============================================
+   BIRTHDAY CARD — style.css
+   =============================================
+   Fonts: Cormorant Garamond (display), DM Sans (body), Alex Brush (script)
+   Palette: Warm rose, dusty lavender, soft gold, cream
+   ============================================= */
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --rose:      #e8a0b4;
+  --rose-deep: #c96a8a;
+  --lavender:  #b8acd6;
+  --gold:      #d4a96a;
+  --cream:     #fdf8f3;
+  --parchment: #f5ede0;
+  --ink:       #2e1f2f;
+  --ink-light: #7a5c6e;
+  --white:     #ffffff;
+  --shadow:    rgba(46, 31, 47, 0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* =============================================
+   AMBIENT BACKGROUND ORBS
+   ============================================= */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: orbDrift 18s ease-in-out infinite alternate;
+}
+
+.orb1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #f4c2d4, transparent 70%);
+  top: -200px; left: -200px;
+  animation-duration: 20s;
+}
+
+.orb2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #c4b5f5, transparent 70%);
+  bottom: -150px; right: -150px;
+  animation-duration: 25s;
+  animation-delay: -8s;
+}
+
+.orb3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #f5d5a0, transparent 70%);
+  top: 40%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 22s;
+  animation-delay: -5s;
+}
+
+@keyframes orbDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(40px, -30px) scale(1.08); }
+  66%  { transform: translate(-30px, 20px) scale(0.95); }
+  100% { transform: translate(20px, 40px) scale(1.05); }
+}
+
+/* Stardust canvas */
+#stardust {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* =============================================
+   SECTIONS — shared
+   ============================================= */
+.section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 300;
+  color: var(--ink);
+  margin-bottom: 56px;
+  line-height: 1.1;
+}
+
+/* =============================================
+   HERO SECTION
+   ============================================= */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  overflow: hidden;
+}
+
+.hero-label {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.3s forwards;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 0.9;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-title .line1 {
+  font-size: clamp(32px, 7vw, 72px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ink-light);
+  opacity: 0;
+  animation: fadeUp 1s ease 0.5s forwards;
+}
+
+.hero-title .line2 {
+  font-size: clamp(100px, 22vw, 220px);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 0.85;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--rose-deep) 50%, var(--lavender) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  animation: fadeUp 1.1s ease 0.7s forwards;
+}
+
+.hero-title .line2 sup {
+  font-size: 0.3em;
+  vertical-align: super;
+  -webkit-text-fill-color: var(--rose-deep);
+}
+
+.hero-title .line3 {
+  font-size: clamp(36px, 8vw, 88px);
+  font-weight: 300;
+  color: var(--ink);
+  letter-spacing: 0.1em;
+  opacity: 0;
+  animation: fadeUp 1s ease 0.9s forwards;
+}
+
+.hero-name {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(26px, 5vw, 42px);
+  color: var(--rose-deep);
+  margin-top: 8px;
+  opacity: 0;
+  animation: fadeUp 1s ease 1.1s forwards;
+}
+
+.hero-name em { font-style: normal; }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--ink-light);
+  opacity: 0;
+  animation: fadeUp 1s ease 1.5s forwards, nudge 2s ease 2.5s infinite;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* =============================================
+   POLAROID WALL
+   ============================================= */
+.polaroid-section { text-align: center; }
+
+.polaroid-wall {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 24px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.polaroid {
+  background: var(--white);
+  padding: 14px 14px 40px;
+  border-radius: 4px;
+  box-shadow: 0 8px 32px var(--shadow), 0 2px 8px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(.23,1,.32,1), box-shadow 0.4s ease;
+  position: relative;
+  will-change: transform;
+}
+
+.polaroid:hover {
+  box-shadow: 0 24px 64px rgba(46,31,47,0.2), 0 4px 16px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+/* Scattered tilt angles */
+.p1 { transform: rotate(-3.5deg); }  .p1:hover { transform: rotate(-1deg) scale(1.06) translateY(-8px); }
+.p2 { transform: rotate(2deg); }     .p2:hover { transform: rotate(0.5deg) scale(1.06) translateY(-8px); }
+.p3 { transform: rotate(-1.5deg); }  .p3:hover { transform: rotate(0deg) scale(1.06) translateY(-8px); }
+.p4 { transform: rotate(3deg); }     .p4:hover { transform: rotate(1deg) scale(1.06) translateY(-8px); }
+.p5 { transform: rotate(-2deg); grid-column: 2 / 3; } .p5:hover { transform: rotate(0deg) scale(1.06) translateY(-8px); }
+
+.polaroid-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.polaroid-caption {
+  font-family: 'Alex Brush', cursive;
+  font-size: 20px;
+  color: var(--ink-light);
+  text-align: center;
+  margin-top: 10px;
+  position: absolute;
+  bottom: 10px;
+  left: 0; right: 0;
+}
+
+/* =============================================
+   IMAGE SLOTS — shared placeholder styling
+   ============================================= */
+.img-slot {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  background: linear-gradient(135deg, #fce8f0 0%, #ede4f8 50%, #fdf0e4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: inherit;
+}
+
+/* When an actual <img> is placed inside, it fills the slot */
+.img-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+/* Hide placeholder content when real img is present */
+.img-slot:has(img) .slot-content { display: none; }
+
+.slot-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.slot-icon {
+  font-size: 28px;
+  opacity: 0.6;
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+.slot-icon.large { font-size: 48px; }
+
+.slot-hint {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rose-deep);
+  opacity: 0.5;
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* =============================================
+   SPOTLIGHT / HERO IMAGE
+   ============================================= */
+.spotlight-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.spotlight-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.spotlight-frame {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.spotlight-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  background: linear-gradient(135deg, var(--rose), var(--lavender), var(--gold)) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  animation: spinRing 12s linear infinite;
+}
+
+@keyframes spinRing { to { transform: rotate(360deg); } }
+
+.spotlight-img {
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(200, 106, 138, 0.4);
+}
+
+.spotlight-glow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,160,180,0.25), transparent 70%);
+  z-index: -1;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50%       { opacity: 1; transform: scale(1.08); }
+}
+
+.spotlight-text { display: flex; flex-direction: column; gap: 28px; }
+
+.big-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(18px, 2.5vw, 26px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.5;
+  border-left: 2px solid var(--rose);
+  padding-left: 20px;
+}
+
+.spotlight-message {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink-light);
+  line-height: 1.8;
+}
+
+.stat-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.stat { display: flex; flex-direction: column; gap: 4px; }
+
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--rose-deep);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  opacity: 0.7;
+}
+
+/* =============================================
+   MOSAIC GRID
+   ============================================= */
+.mosaic-section { text-align: center; }
+
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 240px 240px;
+  gap: 12px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.mosaic-tile {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.mosaic-tile .img-slot { min-height: 100%; border-radius: 16px; }
+
+.mosaic-tile.large  { grid-column: span 2; grid-row: span 1; }
+.mosaic-tile.small  { grid-column: span 1; grid-row: span 1; }
+.mosaic-tile.tall   { grid-column: span 1; grid-row: span 2; }
+.mosaic-tile.wide   { grid-column: span 3; grid-row: span 1; }
+
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(46,31,47,0.7) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: 16px;
+}
+
+.mosaic-tile:hover .tile-overlay { opacity: 1; }
+
+.tile-overlay span {
+  font-family: 'Alex Brush', cursive;
+  font-size: 20px;
+  color: white;
+}
+
+.mosaic-tile { transition: transform 0.35s cubic-bezier(.23,1,.32,1); }
+.mosaic-tile:hover { transform: scale(1.03); z-index: 5; }
+
+/* =============================================
+   LOVE LETTER
+   ============================================= */
+.letter-section { max-width: 680px; }
+
+.letter-card {
+  background: var(--parchment);
+  border-radius: 4px;
+  padding: clamp(40px, 6vw, 80px) clamp(32px, 6vw, 72px);
+  box-shadow: 0 12px 48px var(--shadow), 0 2px 8px rgba(0,0,0,0.05);
+  position: relative;
+  border: 1px solid rgba(212, 169, 106, 0.2);
+}
+
+/* Torn edge decoration */
+.letter-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--parchment) 0px, var(--parchment) 8px,
+    transparent 8px, transparent 12px
+  );
+}
+
+.letter-seal {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--rose-deep));
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+  box-shadow: 0 4px 16px rgba(201, 106, 138, 0.4);
+}
+
+.letter-header {
+  text-align: right;
+  margin-bottom: 28px;
+}
+
+.letter-date {
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--ink-light);
+  opacity: 0.6;
+}
+
+.letter-greeting {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.letter-greeting em { color: var(--rose-deep); font-style: italic; }
+
+.letter-body { display: flex; flex-direction: column; gap: 16px; }
+
+.letter-body p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.9;
+}
+
+.letter-sign {
+  font-family: 'Alex Brush', cursive;
+  font-size: 22px;
+  color: var(--rose-deep);
+  margin-top: 32px;
+  line-height: 1.6;
+}
+
+.letter-sign em { font-style: normal; }
+
+/* =============================================
+   FINALE
+   ============================================= */
+.finale-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.finale-inner { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+
+.finale-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(120px, 25vw, 200px);
+  font-weight: 600;
+  line-height: 0.85;
+  background: linear-gradient(135deg, var(--rose) 0%, var(--lavender) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0.25;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.finale-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 300;
+  color: var(--ink);
+  position: relative;
+}
+
+.finale-sub {
+  font-size: 13px;
+  color: var(--ink-light);
+  letter-spacing: 1px;
+  opacity: 0.7;
+  position: relative;
+}
+
+.btn-celebrate {
+  position: relative;
+  background: linear-gradient(135deg, var(--rose-deep), #9b6bb5);
+  color: white;
+  border: none;
+  padding: 18px 52px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(201,106,138,0.5);
+  transition: transform 0.3s cubic-bezier(.23,1,.32,1), box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.btn-celebrate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  border-radius: inherit;
+}
+
+.btn-celebrate:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 48px rgba(201,106,138,0.6);
+}
+
+.btn-celebrate:active { transform: scale(0.97); }
+
+.btn-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 100px;
+  border: 2px solid var(--rose);
+  opacity: 0;
+  animation: ringPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%   { opacity: 0; transform: scale(1); }
+  50%  { opacity: 0.5; transform: scale(1.06); }
+  100% { opacity: 0; transform: scale(1.12); }
+}
+
+/* =============================================
+   LIGHTBOX
+   ============================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 8, 16, 0.92);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  backdrop-filter: blur(12px);
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 88vw;
+  max-height: 88vh;
+  border-radius: 8px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  object-fit: contain;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(.23,1,.32,1);
+}
+
+.lightbox.open img { transform: scale(1); }
+
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 32px;
+  background: none;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  color: white;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s;
+}
+
+.lightbox-close:hover { background: rgba(255,255,255,0.15); border-color: white; }
+
+/* =============================================
+   SCROLL REVEAL ANIMATION
+   ============================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.23,1,.32,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   UTILITY
+   ============================================= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .polaroid-wall {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .p5 { grid-column: 1 / 3; max-width: 220px; margin: 0 auto; }
+
+  .spotlight-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .spotlight-frame { max-width: 280px; }
+
+  .big-quote { border-left: none; border-top: 2px solid var(--rose); padding: 16px 0 0; text-align: center; }
+
+  .stat-row { justify-content: center; }
+
+  .mosaic-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px 160px;
+  }
+  .mosaic-tile.large { grid-column: span 2; }
+  .mosaic-tile.wide  { grid-column: span 2; }
+  .mosaic-tile.tall  { grid-row: span 1; }
+
+  .section { padding: 72px 16px; }
+
+  .letter-section { padding: 72px 16px; }
+}
+
+@media (max-width: 480px) {
+  .polaroid-wall { gap: 16px; }
+  .polaroid { padding: 10px 10px 36px; }
+  .polaroid-caption { font-size: 17px; }
+  .mosaic-grid { grid-template-rows: 140px 140px 140px; gap: 8px; }
+}
